@@ -1,45 +1,9 @@
-img {
-    width: 100%;
-}
-
-.row {
-  float: left;
-  width:20rem;
-  margin: 0.8rem;
- }
-
-.card {
-  height: 40rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: White;
-  margin: 5px;
-  border-radius: 5px;
-  border: 0.3rem inset blue;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-}
-
-.title {
-  color: white;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #555;
-}
+body {
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: 'Roboto', sans-serif;
+      transform: translateZ(0);
+      font-weight: 400; }

@@ -17,14 +17,15 @@ class MoviesList extends React.Component {
   	console.log ( 'render', { state: this.state} )
     
     const movieElements = this.state.movies.map(movie =>
-    	<Movie movie= {movie} />
+    	<Movie key = {movie.id} movie = {movie} />
     )
     return (
       <div className="App">
           <h1 className="App-title">Movies List</h1>
           <div>{movieElements}</div>
-          <Link to="formulaire">
-          <button>proposer un film</button></Link>       
+          <Link to="/formulaire">
+          <button>New Film?</button>
+          </Link>       
       </div>
     )
   }

@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:3030",
   "dependencies": {
+    "@material-ui/core": "^1.4.0",
+    "@material-ui/icons": "^1.1.0",
     "@reach/router": "^1.1.1",
     "cors": "^2.8.4",
     "react": "^16.4.1",
