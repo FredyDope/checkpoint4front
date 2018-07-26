@@ -1,9 +1,16 @@
-body {
-      
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      font-family: 'Roboto', sans-serif;
-      transform: translateZ(0);
-      font-weight: 400; }
+.container-movie {
+	margin-top: 5rem;
+	margin-right: 3rem;
+	margin-left: 3rem;
+	margin-bottom: 1rem;
+	background-color: grey;
+}
+
+
+
+img {
+	margin-right: 2rem;
+	float: left;
+	width: 10rem;
+	height:15rem ;
+}

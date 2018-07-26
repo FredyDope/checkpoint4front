@@ -32,7 +32,7 @@ class AddMovieForm extends React.Component {
 		this.setState ({
 			Titre: '',
   			Sortie: '',
-  			Genre: '',
+  			Genre: 1,
   			Synopsys: '',
   			Affiche:'',
 		})
@@ -52,7 +52,7 @@ class AddMovieForm extends React.Component {
 	}
 
 	 	render() {
-  		const { classes } = this.props
+  		//const { classes } = this.props
     	return(	 <div className="formulaire">
 	    			<div>
 		    			<form className="forminput" onSubmit={this.handlSubmit}>
@@ -75,7 +75,7 @@ class AddMovieForm extends React.Component {
 			    			</label>
 
 			    			<label >Catégorie :</label>
-								<select className="genreselect" id="Genre" name='Genre' value={this.state.Genre} onChange={event => this.setState({
+								<select className="genreselect" id="Genre" name='Genre' required value={this.state.Genre} onChange={event => this.setState({
 								Genre: event.target.value})}>
 									<option value={1}>Policier</option>
 									<option value={2}>Comique</option>

@@ -1,51 +1,49 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import { Link } from '@reach/router'
+import './movie.css'
 
 const styles = {
   card: {
-    maxWidth: 345,
+    maxWidth: 50,
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
-};
+}
 
 const Movie = ({ movie }) => {
 
     return (
-          <div>
-            <Card className={movie.card} display="flex">
-              <CardMedia className={movie.media}>                
-                <img src={movie.Affiche} style={{width:'30%'}}/>        
-              </CardMedia>
-              <CardContent>
+          <div className="container-movie">
+            <Card className="card" sytle={{width:'300px'}}>
+                <img src={movie.Affiche} alt={'affiche du film'}/>
+              <CardContent sytle={{padding:'1rem'}} >
                 <Typography gutterBottom variant="headline" component="h2">
                   {movie.Titre}
                 </Typography>
                 <Typography component="p">
-                  <p>Date de sortie :{movie.Sortie}</p>
-                  <p>Genre : {movie.Genre}</p>
-                  <p>Synopsys : {movie.Synopsys}</p>
+                  Date de sortie :{movie.Sortie}<br/>
+                  Genre : {movie.Genre}<br/>
+                  Synopsys : {movie.Synopsys}
                 </Typography>
               </CardContent>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Share
-                </Button>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
+              <CardActions paddingBottom = '2rem'>
+              <Link to={`/movie/${movie.id}`}>
+                <Button variant="contained" color="primary">VU</Button></Link>
+              <Link to={`/delete/${movie.id}`}>
+                <Button variant="contained" color="primary">Delete</Button></Link>
+              <Link to={`/update/${movie.id}`}>
+                <Button variant="contained" color="primary">Update</Button></Link>
               </CardActions>
             </Card>
-          </div>   
+            </div>  
     )
 }
 

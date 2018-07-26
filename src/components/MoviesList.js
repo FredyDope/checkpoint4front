@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from "@reach/router"
 import Movie from './Movie'
 
 class MoviesList extends React.Component {
@@ -21,11 +20,7 @@ class MoviesList extends React.Component {
     )
     return (
       <div className="App">
-          <h1 className="App-title">Movies List</h1>
-          <div>{movieElements}</div>
-          <Link to="/formulaire">
-          <button>New Film?</button>
-          </Link>       
+          <div>{movieElements}</div>      
       </div>
     )
   }
