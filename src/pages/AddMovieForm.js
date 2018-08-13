@@ -1,6 +1,6 @@
 import React from 'react'
 import './addmovie.css'
-//import { Link } from "@reach/router"
+import { Link } from "@reach/router"
 
 class AddMovieForm extends React.Component {
 	constructor() {
@@ -8,11 +8,22 @@ class AddMovieForm extends React.Component {
 		this.state = {
 			Titre: '',
   			Sortie: '',
-  			Genre: 1,
+  			Genre: '',
   			Synopsys: '',
   			Affiche:'',
 		}
 	}
+
+	handleChange = e => {
+    const { name } = e.target
+    let value = e.target.value
+
+    if (name === 'Genre') {
+      value = Number(value)
+    }
+
+    return this.setState({ movie: { ...this.state.movie, [name]: value } })
+  }
 
 	/*handleClick = () => {
     	this.setState({ open: true });
@@ -26,13 +37,13 @@ class AddMovieForm extends React.Component {
     this.setState({ open: false });
   };*/
 
-	handlSubmit = (event) => {
-		event.preventDefault()
+	handlSubmit = (e) => {
+		e.preventDefault()
 		console.log(this.state)
 		this.setState ({
 			Titre: '',
   			Sortie: '',
-  			Genre: 1,
+  			Genre: '',
   			Synopsys: '',
   			Affiche:'',
 		})
@@ -52,7 +63,7 @@ class AddMovieForm extends React.Component {
 	}
 
 	 	render() {
-  		//const { classes } = this.props
+  		const movie = this.state.movie
     	return(	 <div className="formulaire">
 	    			<div>
 		    			<form className="forminput" onSubmit={this.handlSubmit}>
@@ -60,8 +71,8 @@ class AddMovieForm extends React.Component {
 			    				value = {this.state.Titre} 
 			    				placeholder="Titre"
 			    				type="text"
-			    				onChange={event => this.setState({
-								Titre: event.target.value})}		
+			    				onChange={e => this.setState({
+								Titre: e.target.value})}		
 			    			/>
 			    			
 			    			<label >Date de sortie :
@@ -69,46 +80,54 @@ class AddMovieForm extends React.Component {
 			    				value = {this.state.Sortie} 
 			    				placeholder="Sortie"
 			    				type="date" 
-			    				onChange={event => this.setState({
-								Sortie: event.target.value})}
+			    				onChange={e => this.setState({
+								Sortie: e.target.value})}
 			    			/>
 			    			</label>
 
-			    			<label >Catégorie :</label>
-								<select className="genreselect" id="Genre" name='Genre' required value={this.state.Genre} onChange={event => this.setState({
-								Genre: event.target.value})}>
-									<option value={1}>Policier</option>
-									<option value={2}>Comique</option>
-									<option value={3}>Science Fiction</option>
-									<option value={4}>Aventure</option>
-								</select>
-							
+			    			<input className="article-form-input"
+			    				value = {this.state.Genre} 
+			    				placeholder="Genre"
+			    				type="text"
+			    				onChange={e => this.setState({
+								Genre: e.target.value})}		
+			    			/>
 
 			    			<textarea className="resume"
 			    				value = {this.state.Synopsys} 
 			    				placeholder="Synopsys"
 			    				type="text" 
-			    				onChange={event => this.setState({
-								Synopsys: event.target.value})}
+			    				onChange={e => this.setState({
+								Synopsys: e.target.value})}
 			    			/>
 			    			<input className="article-form-input"
 			    				value = {this.state.Affiche} 
 			    				placeholder="Affiche"
 			    				type="URL" 
-			    				onChange={event => this.setState({
-								Affiche: event.target.value})}
+			    				onChange={e => this.setState({
+								Affiche: e.target.value})}
 			    			/>
 				    		<div>
-				    			<button className="buttonform"
+				    			<button 
+				    				className="buttonform"
 				    				style={{padding: 'auto'}}
 				    				onClick={this.handleClick}
 				    				variant="raised"
 				    				color="primary"
 				    				type="submit"
 				    			>
-				    			send
+				    			Send
 				    			</button>
 			    			</div>
+			    			<Link to="/home">
+	            				<button className="buttonform" 
+	            						cstyle={{padding: 'auto'}}
+						    			variant="raised"
+										color="primary" 
+								>
+								Cancel
+								</button>
+          					</Link>  
 		    			</form>
     				</div>
     			</div>

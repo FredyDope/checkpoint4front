@@ -1,23 +1,40 @@
 import React from 'react'
+import {
+AppBar,
+Toolbar,
+IconButton,
+Typography,
+Button,
+withStyles,
+} from '@material-ui/core';
+
+import { Home as HomeIcon, Add as AddIcon } from '@material-ui/icons';
+
 import { Link } from "@reach/router"
-import Button from '@material-ui/core/Button';
 
-
-
-class Header extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Header</h1>
-          <nav>
-          <Link to="/home">
-          <Button variant="contained" color="primary">Home</Button></Link>
-          </nav>
-        </header>
-      </div>
-    )
-  }
+const styles = {
+ flex: {
+   flex: 1,
+ },
 }
 
-export default Header
+class Header extends React.Component {
+    render() {
+      return (
+        <AppBar position="static">
+          <Toolbar>
+          <Typography variant="title" color="inherit">
+          Cine Blog
+          </Typography>
+          <Link to="/home">
+            <IconButton color="inherit"><HomeIcon /></IconButton>
+          </Link>  
+          <Link to="/formulaire">
+            <IconButton color="secondary"><AddIcon /></IconButton>
+          </Link>  
+          </Toolbar>
+        </AppBar>
+      )
+    }
+}
+export default withStyles(styles)(Header);

@@ -6,9 +6,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <Link to="/formulaire">
-          <Button variant="contained" color="primary">New Film?</Button>
-        </Link>       
+             
       </div>
     )
   }

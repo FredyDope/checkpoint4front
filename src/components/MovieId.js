@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from '@reach/router'
+import Button from '@material-ui/core/Button'
 import Movie from './Movie'
 
 class MovieId extends Component {
@@ -23,7 +24,6 @@ class MovieId extends Component {
   	const movieElements = this.state.onemovie.map(movie =>
     	<Movie key = {movie.id} movie = {movie} />
     )
-    
     return (
       <div>
        <div>{movieElements}</div>

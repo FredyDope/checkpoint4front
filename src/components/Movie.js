@@ -34,11 +34,15 @@ const Movie = ({ movie }) => {
                   Synopsys : {movie.Synopsys}
                 </Typography>
               </CardContent>
-              <CardActions paddingBottom = '2rem'>
+              <CardActions>
               <Link to={`/movie/${movie.id}`}>
                 <Button variant="contained" color="primary">VU</Button></Link>
               <Link to={`/delete/${movie.id}`}>
-                <Button variant="contained" color="primary">Delete</Button></Link>
+                <Button
+                onClick="return confirm('Are you sure you want to delete this item?')"
+                variant="contained" 
+                color="primary">
+                Delete</Button></Link>
               <Link to={`/update/${movie.id}`}>
                 <Button variant="contained" color="primary">Update</Button></Link>
               </CardActions>
