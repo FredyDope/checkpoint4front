@@ -1,28 +1,52 @@
 import React from 'react'
-import {
-Typography,
-withStyles,
-} from '@material-ui/core';
+import 'font-awesome/css/font-awesome.min.css'
+import { Link } from '@reach/router'
+import '../css/Footer.css'
 
-const styles = theme => ({
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing.unit * 6,
-  }
-})
+const Footer = () =>
+  <div className="Footer">
+    <Link to='/homepage'>
+      {/*<img src={logo} className='logo' alt='logo' />*/}
+    </Link>
+    <div className='FooterText'>Fred Cine Blog © 2018</div>
+            <div className='SocialNetworks'>
+              
+                
+                  <a href="https://www.facebook.com">
+                    <span className="fa-stack fa-lg">
+                      <i className="fa fa-circle fa-stack-2x"></i>
+                      <i className="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                
+                
+                  <a href="https://www.twitter.com">
+                    <span className="fa-stack fa-lg">
+                      <i className="fa fa-circle fa-stack-2x"></i>
+                      <i className="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                
+                
+                  <a href="https://www.linkedin.com">
+                    <span className="fa-stack fa-lg">
+                      <i className="fa fa-circle fa-stack-2x"></i>
+                      <i className="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                
+                
+                  <a href="https://github.com/">
+                    <span className="fa-stack fa-lg">
+                      <i className="fa fa-circle fa-stack-2x"></i>
+                      <i className="fa fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                
+            
+            </div>
+    <Link to='/home'><div className='FooterText'>Home</div></Link>
+    <div className='FooterText'>Mentions légales</div>
+  </div>
 
-function Footer(props) {
-  const { classes } = props;
-      return (
-      <footer className={classes.footer}>
-        <Typography variant="title" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subheading" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-      </footer>
-      )
-    
-}
-export default withStyles(styles)(Footer);
+export default Footer

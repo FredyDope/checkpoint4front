@@ -38,7 +38,7 @@ const App = ({ classes }) => (
             <MovieId path="/movie/:id" />
             <AddMovieForm path="/formulaire" />
           </Router>
-          
+          <Footer />
         </main>
         
       </div>
