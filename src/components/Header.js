@@ -4,11 +4,9 @@ AppBar,
 Toolbar,
 IconButton,
 Typography,
-Button,
 withStyles,
 } from '@material-ui/core';
-
-import { Home as HomeIcon, Add as AddIcon } from '@material-ui/icons';
+import { Home as HomeIcon, Edit as EditIcon } from '@material-ui/icons';
 
 import { Link } from "@reach/router"
 
@@ -27,11 +25,11 @@ class Header extends React.Component {
           Cine Blog
           </Typography>
           <Link to="/home">
-            <IconButton color="inherit"><HomeIcon /></IconButton>
+            <IconButton><HomeIcon /></IconButton>
           </Link>  
-          <Link to="/formulaire">
-            <IconButton color="secondary"><AddIcon /></IconButton>
-          </Link>  
+          <Link to="/moviesmanager">
+          <IconButton color="secondary" ><EditIcon /></IconButton>
+          </Link>
           </Toolbar>
         </AppBar>
       )

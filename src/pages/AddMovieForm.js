@@ -25,18 +25,6 @@ class AddMovieForm extends React.Component {
     return this.setState({ movie: { ...this.state.movie, [name]: value } })
   }
 
-	/*handleClick = () => {
-    	this.setState({ open: true });
-  	};
-
-  	handleClose = (event, reason) => {
-    	if (reason === 'clickaway') {
-      	return;
-    }
-
-    this.setState({ open: false });
-  };*/
-
 	handlSubmit = (e) => {
 		e.preventDefault()
 		console.log(this.state)
@@ -85,13 +73,26 @@ class AddMovieForm extends React.Component {
 			    			/>
 			    			</label>
 
-			    			<input className="article-form-input"
-			    				value = {this.state.Genre} 
-			    				placeholder="Genre"
-			    				type="text"
-			    				onChange={e => this.setState({
-								Genre: e.target.value})}		
-			    			/>
+			    			
+			    			{/*<input className="article-form-input"
+			    						    				value = {this.state.Genre} 
+			    						    				placeholder="Genre"
+			    						    				type="text"
+			    						    				onChange={e => this.setState({
+			    											Genre: e.target.value})}		
+			    						    			/>*/}
+			    			<label>
+					          Pick your favorite flavor:
+					         <select className="article-form-input"
+					         	value = {this.state.Genre} 
+					         	onChange={e => this.setState({
+								Genre: e.target.value})}>
+					            <option value="grapefruit">Grapefruit</option>
+					            <option value="lime">Lime</option>
+					            <option value="coconut">Coconut</option>
+					            <option value="mango">Mango</option>
+					          </select>
+					        </label>
 
 			    			<textarea className="resume"
 			    				value = {this.state.Synopsys} 

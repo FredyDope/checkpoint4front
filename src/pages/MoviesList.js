@@ -1,22 +1,26 @@
 import React from 'react'
-import Movie from '../components/Movie'
-import AddMovieForm from '../pages/AddMovieForm'
-import { Router, Link, withRouter, Redire } from '@reach/router'
+import Cards from '../components/Cards'
+import { Link } from  "@reach/router"
 
 import {
   withStyles,
   Typography,
   Button,
-  IconButton,
-  Paper,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
 } from '@material-ui/core'
 
-import { Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons'
+import { Add as AddIcon } from '@material-ui/icons'
 
+const styles = theme => ({
+  fab: {
+    position: 'absolute',
+    bottom: 3 * theme.spacing.unit,
+    right: 3 * theme.spacing.unit,
+    [theme.breakpoints.down('xs')]: {
+      bottom: 2 * theme.spacing.unit,
+      right: 2 * theme.spacing.unit,
+    },
+  },
+});
 
 class MoviesList extends React.Component {
 	state = {
@@ -30,26 +34,33 @@ class MoviesList extends React.Component {
 	}
 
   render() {
+    const { classes } = this.props;
+
   	console.log ( 'render', { state: this.state} )
     
     const movieElements = this.state.movies.map(movie =>
-    	<Movie key = {movie.id} movie = {movie} />
+    	<Cards key = {movie.id} movie = {movie} />
     )
-    const id = this.props.id
+
     return (
 
-      <div className="App">
-            <Typography variant="display1">Liste de Films</Typography>
-          <div>{movieElements}
+    <div>
+          <Typography variant="display1">Liste de Films</Typography>
           <div>
-       <Button 
-       color="inherit" 
-       component={Link} 
-       to={`/delete/${id}`}>Delete</Button>
-       </div></div>     
-      </div>
+            {movieElements}
+          </div>
+          <Link to="/formulaire">
+            <Button
+            variant="fab"
+            color="secondary"
+            aria-label="add"
+            className={classes.fab}
+          >
+          <AddIcon />
+          </Button>
+          </Link>
+    </div>
     )
   }
 }
-
-export default MoviesList
+export default withStyles(styles)(MoviesList);

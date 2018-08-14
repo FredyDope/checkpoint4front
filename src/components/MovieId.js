@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from '@reach/router'
-import Button from '@material-ui/core/Button'
-import Movie from './Movie'
+import Cards from './Cards'
 
 class MovieId extends Component {
 	state = {
@@ -22,7 +20,10 @@ class MovieId extends Component {
   		return <p>Loading...</p>
   	}
   	const movieElements = this.state.onemovie.map(movie =>
-    	<Movie key = {movie.id} movie = {movie} />
+    	<Cards 
+      key = {movie.id} 
+      movie = {movie} 
+      />
     )
     return (
       <div>

@@ -1,15 +1,12 @@
 import React from 'react';
-import {
-  Typography,
-} from '@material-ui/core';
-import MoviesList from './MoviesList'
+import ResumMovielist from './ResumMovielist'
 
 
 class Home extends React.Component {
   render() {
     return (
       <div>
-      <MoviesList path="/home" />
+      <ResumMovielist path="/home" />
       </div>
     )
   }

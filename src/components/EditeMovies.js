@@ -5,9 +5,6 @@ import { Link } from "@reach/router"
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
-import InputLabel from '@material-ui/core/InputLabel'
 
 const styles = (theme) => ({
 	container: {
@@ -29,11 +26,8 @@ const styles = (theme) => ({
 		display: 'none'
 	}
 })
-;(movie) => JSON.stringify(movie.Titre)
-;(movie) => JSON.stringify(movie.Sortie)
-;(movie) => JSON.stringify(movie.Genre)
-;(movie) => JSON.stringify(movie.Synopsys)
-;(movie) => JSON.stringify(movie.Affiche)
+
+const Movie =({movie}) => JSON.stringify(movie.Titre, movie.Sortie, movie.Genre, movie.Synopsys, movie.Affiche)
 
 class EditMovies extends React.Component {
 	constructor(props) {
@@ -44,11 +38,7 @@ class EditMovies extends React.Component {
   			Sortie: '',
   			Genre: '',
   			Synopsys: '',
-  			Affiche:'',
-  			name:'',
-
-			displaySnack: false,
-			snack: { variant: 'warning', message: '' }
+  			Affiche:''
 		}
 	}
 
@@ -73,12 +63,6 @@ class EditMovies extends React.Component {
 			
 	}
 
-	onChange = (e) => {
-    const state = this.state.movie
-    state[e.target.name] = e.target.value;
-    this.setState({movie:state});
-  }
-
 	handlSubmit = (e) => {
 
 		const id = this.props.id
@@ -98,7 +82,7 @@ class EditMovies extends React.Component {
 		return (
 			<div>
 				<h1>Modifier votre affiche de film</h1>
-				<form className={classes.container} className="formulaire">
+				<form className={classes.container}>
 					<div className="containerprincipal">
 						<div className="container1">
 							<TextField
@@ -107,7 +91,7 @@ class EditMovies extends React.Component {
 								type="text"
 								value={this.state.movie.Titre}
 								className={classes.textField}
-								onChange={(e) => console.log(e) || this.handleChange(e)}
+								onChange={this.handleChange}
 								placeholder="Titre"
 							/>
 							<br />
@@ -127,16 +111,29 @@ class EditMovies extends React.Component {
 							/>
 						</div>
 						<div className="container2">
-							<TextField
-								id="multiline-static"
-								label="Genre"
-								name="Genre"
-								type="text"
-								value={this.state.movie.Genre}
-								className={classes.textField}
-								onChange={this.handleChange}
-								placeholder="Genre"
-							/>
+						{/*
+													<TextField
+														id="multiline-static"
+														label="Genre"
+														name="Genre"
+														type="text"
+														value={this.state.movie.Genre}
+														className={classes.textField}
+														onChange={this.handleChange}
+														placeholder="Genre"
+													/>*/}
+							<label>
+					          Pick your favorite flavor:
+					         <select className="article-form-input"
+					         	value = {this.state.movie.Genre} 
+					         	onChange={this.handleChange}>
+					            <option value="grapefruit">Grapefruit</option>
+					            <option value="lime">Lime</option>
+					            <option value="coconut">Coconut</option>
+					            <option value="mango">Mango</option>
+					          </select>
+					        </label>
+					        						
 							<br />
 								<TextField
 								id="multiline-static"

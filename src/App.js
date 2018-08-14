@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './App.css'
 import { Router } from '@reach/router'
 import {
@@ -7,11 +7,13 @@ import {
 } from '@material-ui/core'
 
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import AddMovieForm from './pages/AddMovieForm'
 import MovieId from './components/MovieId'
 import DeleteMovie from './components/DeleteMovie'
 import EditeMovies from './components/EditeMovies'
+import MoviesManager from './pages/MoviesManager'
 
 const styles = theme => ({
   main: {
@@ -22,7 +24,6 @@ const styles = theme => ({
   },
 });
 
-
 const App = ({ classes }) => (
  
       <div>
@@ -30,13 +31,16 @@ const App = ({ classes }) => (
         <Header/>
         <main className={classes.main}>
           <Router>
+            <MoviesManager path="/moviesmanager" />
             <Home path ="/home" />
             <EditeMovies path="/update/:id" />
             <DeleteMovie path="/delete/:id" />
             <MovieId path="/movie/:id" />
             <AddMovieForm path="/formulaire" />
           </Router>
+          
         </main>
+        
       </div>
 )
 
