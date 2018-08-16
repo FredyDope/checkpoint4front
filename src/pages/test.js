@@ -1,9 +1,8 @@
 import React from 'react'
-import './addmovie.css'
 import { Link } from "@reach/router"
 import {TextField,
 		Button,
-		WithStyles,
+		withStyles,
 		} from '@material-ui/core'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -12,18 +11,33 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Add } from '@material-ui/icons'
+
+
+const styles = theme => ({
+  fab: {
+    position: 'absolute',
+    bottom: 3 * theme.spacing.unit,
+    right: 3 * theme.spacing.unit,
+    [theme.breakpoints.down('xs')]: {
+      bottom: 2 * theme.spacing.unit,
+      right: 2 * theme.spacing.unit,
+    },
+  },
+});
+
+
 
 class AddMovieForm extends React.Component {
-	constructor() {
-		super()
-		this.state = {
-			Titre: '',
-  			Sortie: '',
-  			Genre: '',
-  			Synopsys: '',
-  			Affiche:'',
-		}
-	}
+	
+			state = {
+				open:false,
+				Titre: '',
+	  			Sortie: '',
+	  			Genre: '',
+	  			Synopsys: '',
+	  			Affiche:'',
+	  		}	
 
 	handleChange = e => {
 	    const { name } = e.target
@@ -57,12 +71,33 @@ class AddMovieForm extends React.Component {
 			      err  =>  this.setState({"flash":  err.flash})
 	    )
 	}
-
+	handleToggle = () => {
+		this.setState({
+			open: !this.state.open
+		})
+	}
 	 	render() {
-  		const movie = this.state.movie
-    	return(	 <div className="formulaire">
-	    			<div>
-		    			<form onSubmit={this.handleSubmit}>
+	 	const { open } = this.state
+    	return(	
+	    		<div>
+	    			<Button 
+	    			variant="fab"
+			        color="secondary"
+			        aria-label="add"
+	    			onClick={this.handleToggle}>
+	    			<Add /> 
+	    			</Button>
+	    			<Dialog
+			          open={open}
+			          onClose={this.handleToggle}
+			          aria-labelledby="form-dialog-title"
+			        >
+			          <DialogTitle id="form-dialog-title">New Movie</DialogTitle>
+			          <DialogContent>
+			            <DialogContentText>
+			             Content
+			            </DialogContentText>
+			            <form onSubmit={this.handleSubmit}>
 			    			<TextField style={{width:'90%'}}
 			    				label="Titre"
 			    				value = {this.state.Titre} 
@@ -73,25 +108,26 @@ class AddMovieForm extends React.Component {
 			    			/>
 			    			<TextField style={{width:'90%'}}
 			    				value = {this.state.Sortie}
+			    				type="date"
 			    				onChange={e => this.setState({
 								Sortie: e.target.value})} 
-						        type="date"
 						      />
 			    			 <Select style={{width:'90%'}}
 			    			 	label="Style"
+			    			 	type="text"
 						        value = {this.state.Genre} 
 					         	onChange={e => this.setState({
 								 Genre: e.target.value})}>
 						        >
-						          <MenuItem value="lovestory"> Love Story </MenuItem>
-						          <MenuItem value="thriller"> Thriller </MenuItem>
-						          <MenuItem value="comedie"> Comedie </MenuItem>
-						          <MenuItem value="aventure"> Aventure </MenuItem>
-						          <MenuItem value="action"> Action </MenuItem>
-						          <MenuItem value="western"> Western </MenuItem>
+						          <MenuItem value={1}> Love Story </MenuItem>
+						          <MenuItem value={2}> Thriller </MenuItem>
+						          <MenuItem value={3}> Comedie </MenuItem>
+						          <MenuItem value={4}> Aventure </MenuItem>
+						          <MenuItem value={5}> Action </MenuItem>
+						          <MenuItem value={6}> Western </MenuItem>
 						        </Select>
+			    			
 			    			<TextField style={{width:'90%'}}
-						        id="multiline-static"
 						        label="Synopsys"
 						        multiline
 						        rows="4"
@@ -103,7 +139,6 @@ class AddMovieForm extends React.Component {
 								Synopsys: e.target.value})}
 						        />
 						    <TextField style={{width:'90%'}}
-								id="picture"
 								label="Affiche du film"
 								name="Affiche"
 								type="url"
@@ -113,30 +148,33 @@ class AddMovieForm extends React.Component {
 								placeholder="Affiche"
 							/>
 							<br />
-				    		<div>
-				    			<Button
+				    			
+		    			</form>
+			          </DialogContent>
+			          <DialogActions>
+			            		<Button
 				    			style={{padding: 'auto'}}
+				    			onClick={this.handleClick}
 				    			variant="raised"
 				    			color="primary"
 				    			type="submit"
 				    			>
 				    			Send
 				    			</Button>
-			    			</div>
-			    			<Link to="/home">
+			    			<Link to="/moviesmanager">
 	            				<Button 
 		            			cstyle={{padding: 'auto'}}
 							    variant="raised"
 								color="primary" 
 								>
-								Cancel
+								Home
 								</Button>
           					</Link>  
-		    			</form>
-    				</div>
+			          </DialogActions>
+			        </Dialog>
     			</div>
     	)
   	}
 }
+export default withStyles(styles)(AddMovieForm);
 
-export default AddMovieForm
