@@ -14,6 +14,8 @@ import MovieId from './components/MovieId'
 import DeleteMovie from './components/DeleteMovie'
 import EditeMovies from './components/EditeMovies'
 import MoviesManager from './pages/MoviesManager'
+import Open from './pages/Open'
+
 
 const styles = theme => ({
   main: {
@@ -25,12 +27,12 @@ const styles = theme => ({
 });
 
 const App = ({ classes }) => (
- 
       <div>
       <CssBaseline />
         <Header/>
         <main className={classes.main}>
           <Router>
+            <Open path='/' />
             <MoviesManager path="/moviesmanager" />
             <Home path ="/home" />
             <EditeMovies path="/update/:id" />
@@ -39,8 +41,7 @@ const App = ({ classes }) => (
             <AddMovieForm path="/formulaire" />
           </Router>
           <Footer />
-        </main>
-        
+        </main>    
       </div>
 )
 

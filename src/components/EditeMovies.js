@@ -30,26 +30,23 @@ const styles = (theme) => ({
 const Movie =({movie}) => JSON.stringify(movie.Titre, movie.Sortie, movie.Genre, movie.Synopsys, movie.Affiche)
 
 class EditMovies extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
+	state = {
 			movie: null,
 			Titre: '',
   			Sortie: '',
   			Genre: '',
   			Synopsys: '',
   			Affiche:''
-		}
 	}
 
-	handleChange = (e) => {
+	handleChange (e){
 		const movie = {
 			...this.state.movie,
 			[e.target.name]: e.target.value
 		}
 		this.setState({ movie })
 	}
-
+	
 	componentDidMount() {
 		const id = this.props.id
 		console.log('props', id)
@@ -58,12 +55,10 @@ class EditMovies extends React.Component {
 			.then((res) => {
 				this.setState({ movie: res.data })
 				console.log(this.state.movie)
-				
 			})
-			
 	}
 
-	handlSubmit = (e) => {
+	handleSubmit (e) {
 
 		const id = this.props.id
 		const movie = this.state.movie
@@ -81,7 +76,7 @@ class EditMovies extends React.Component {
 
 		return (
 			<div>
-				<h1>Modifier votre affiche de film</h1>
+				<h1>Modifier votre fiche de film</h1>
 				<form className={classes.container}>
 					<div className="containerprincipal">
 						<div className="container1">
@@ -163,7 +158,7 @@ class EditMovies extends React.Component {
 					</div>
 					<div className="addbutton">
 						<button
-							onClick={this.handlSubmit}
+							onClick={this.handleSubmit}
 							className="buttonform"
 							style={{ padding: 'auto' }}
 							variant="raised"

@@ -49,8 +49,9 @@ class MoviesList extends React.Component {
           <div>
             {movieElements}
           </div>
-          <Link to="/formulaire">
+          <Link to="/formulaire" >
             <Button
+            position = 'absolute'
             variant="fab"
             color="secondary"
             aria-label="add"

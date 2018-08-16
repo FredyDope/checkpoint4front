@@ -21,7 +21,7 @@ const styles = theme =>({
     justify:"center",
     float: 'left',
     width: 200,
-    height: 300,
+    height: 400,
     marginLeft: 50,
     marginRight: 30,
   },
@@ -46,7 +46,13 @@ function Cards({ movie, classes }) {
                   {movie.Titre}
                 </Typography>
                 <Typography  noWrap component="p">
-                  {movie.Synopsys}
+                {movie.Sortie} 
+                </Typography>
+                 <Typography  noWrap component="p">
+                {movie.Genre} 
+                </Typography>
+                 <Typography  noWrap component="p">
+                 {movie.Synopsys} 
                 </Typography>
               </CardContent>
               <CardActions>
